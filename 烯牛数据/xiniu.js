@@ -338,7 +338,7 @@ function binl2b64(binarray) {
 function get_request_payload(n){
     s = JSON.stringify(n)
     l= JSON.parse(s)
-    payload = e1(e2(JSON.stringify(l)))
+    payload = e1(e2(JSON.stringify(l.payload)))
     sig= hex_md5(payload + _p).toUpperCase()
     // console.log(payload)
     // console.log(sign)

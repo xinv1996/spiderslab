@@ -1,27 +1,50 @@
 # -*- coding:utf-8 -*-
 # @project: spiderslab
 # @software: GoLand
+
 import json
+import time
 
 import execjs
 import requests
-import json
 
 jscode = open('xiniu.js', 'r').read()
 js = execjs.compile(jscode)
 
-url = 'http://www.xiniudata.com/api2/service/x_service/person_company4_list/list_companies4_list_by_codes'
-
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
-    "Cookie": "自己的cookie"
+    "Cookie": "你自己的cookie！！！！！！！！！！！！！！！！！！！！！！！！！！！",
 }
-# 公司代码
-target_company = {"codes":["jufengoulu"]}
+# 获取公司列表
+
+list_url = 'http://www.xiniudata.com/api/search3/company/search_company_for_lib'
+
+page = 0
+
+list_data = {
+    "payload": {"tag_names": [], "corporate_regionIds": [1], "corporate_provinceIds": [], "corporate_cityIds": [],
+                "corporate_districtIds": [], "corporate_establishDate_start": None, "corporate_establishDate_end": None,
+                "funding_fundingDate_start": None, "funding_fundingDate_end": None, "corporate_locationIds": [],
+                "corporate_rounds": [], "operator": "and", "notFromGongshang": True, "sort": 76006, "order": -1,
+                "start": page, "limit": 20, "domestic": None}}
+
+list_req_data = js.call('get_request_payload', list_data)
+
+list_req = requests.post(url=list_url, headers=headers, json=json.loads(list_req_data))
+
+list_res_data = js.call('get_data', list_req.json()['d'])
+
+print(list_res_data)
+
+
+# 获取公司详情
+target_company = {"payload":{"codes":["jufengoulu"]}}
 
 req_data = js.call('get_request_payload', target_company)
 
-req = requests.post(url=url, headers=headers, json=json.loads(req_data))
+cimpany_url = 'http://www.xiniudata.com/api2/service/x_service/person_company4_list/list_companies4_list_by_codes'
+
+req = requests.post(url=cimpany_url, headers=headers, json=json.loads(req_data))
 
 res_data = js.call('get_data', req.json()['d'])
 
