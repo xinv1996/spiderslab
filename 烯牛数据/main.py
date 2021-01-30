@@ -3,7 +3,6 @@
 # @software: GoLand
 
 import json
-import time
 
 import execjs
 import requests
