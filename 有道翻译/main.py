@@ -48,7 +48,7 @@ data = {
 }
 
 headers = {
-    "Cookie": "OUTFOX_SEARCH_USER_ID=1513811869@10.108.160.139;",
+    "Cookie": "OUTFOX_SEARCH_USER_ID=1513811869@123.213.212.123;",
     "Referer": "http://fanyi.youdao.com/",
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
 }
