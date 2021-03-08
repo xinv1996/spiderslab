@@ -13,6 +13,12 @@ import requests
 from PIL import Image
 
 js_code = '''
+function get_x_auth_token() {
+    var UUID = require('uuidjs');
+    return UUID.generate()
+}
+
+
 function get_sign(urlstr) {
     var bcrypt = require('bcrypt');
     var r = urlstr.replace('https://www.caasbuy.com','')
@@ -38,6 +44,8 @@ js = execjs.compile(js_code)
 
 timestamp = int(time.time() * 1000)
 
+x_auth_token= js.call('get_x_auth_token')
+
 
 def get_captch():
     print(f"{'*'*50}正在识别验证码{'*'*50}")
@@ -50,7 +58,7 @@ def get_captch():
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
             "sign": captcha_dict['sign'],
             "nonce": f"{captcha_dict['nonce']}",
-            "x-auth-token": "自行抓包填充"
+            "x-auth-token": f"{x_auth_token}"
         }
         captcha_resp = requests.get(url=captcha_url, headers=captcha_headers)
         captcha_resp.encoding = 'utf-8'
@@ -112,7 +120,7 @@ def get_password(password):
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
         "sign": aes_sign_dict['sign'],
         "nonce": f"{aes_sign_dict['nonce']}",
-        "x-auth-token": "自行抓包填充"
+        "x-auth-token": f"{x_auth_token}"
     }
     aes_resp = requests.get(url=aes_key_url, headers=aes_headers)
 
@@ -131,7 +139,7 @@ def login(captch_code, username, password):
         "sign": login_sign_dict['sign'],
         "nonce": f"{login_sign_dict['nonce']}",
         "Authorization": "自行抓包填充",
-        "x-auth-token": "自行抓包填充"
+        "x-auth-token": f"{x_auth_token}"
     }
     data = {
         "username": username,
