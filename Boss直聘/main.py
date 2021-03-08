@@ -12,7 +12,7 @@ if __name__ == '__main__':
     sess = requests.Session()
     proxies = {'http': 'http://127.0.0.1:1086', 'https': 'https://127.0.0.1:1086'}
     headers = {
-        "user-agent": f"ua",
+        "user-agent": f"{ua}",
     }
     url = "https://www.zhipin.com/job_detail/?query=%E5%8C%97%E4%BA%AC%E4%B9%BE%E5%9D%A4%E9%95%BF%E5%8D%BF%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8"
     response = requests.get(url, headers=headers, proxies=proxies)
