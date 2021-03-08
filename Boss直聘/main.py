@@ -55,7 +55,7 @@ return encodeURIComponent(code)
     print(zp_stoken)
     headers = {
         "user-agent": f"{ua}",
-        "cookie": f'__zp_stoken__={zp_stoken};__zp_sname__={js_name}; __zp_sts__={ts};__zp_sseed__={seed};',
+        "cookie": f'__zp_stoken__={zp_stoken}',
         "referer": f"https://www.zhipin.com/web/common/security-check.html?seed={quote(seed)}&name={js_name}&ts={ts}&callbackUrl={quote(url.replace('https://www.zhipin.com', ''))}&srcReferer=",
     }
     resp = sess.get(url=url, headers=headers,
