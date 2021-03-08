@@ -10,7 +10,7 @@ from ua_pool import chrome
 if __name__ == '__main__':
     ua = random.choice(chrome)
     sess = requests.Session()
-    proxies = {'http': 'http://127.0.0.1:5233', 'https': 'https://127.0.0.1:5233'}
+    proxies = {'http': 'http://127.0.0.1:1086', 'https': 'https://127.0.0.1:1086'}
     headers = {
         "user-agent": f"ua",
     }
