@@ -60,8 +60,10 @@ page = 3
 params = ['all', 'cn', 'iphone', '36',today, str(page)]
 
 r = ''.join(sorted(params))
+print(f"r:{r}")
 
 base64_r = base64.b64encode(r.encode('utf-8')).decode('utf-8')
+print(f"base64_r:{base64_r}")
 
 base_url = 'https://api.qimai.cn'
 
@@ -72,7 +74,7 @@ _ = '@#'
 
 str_r = base64_r + _ + url + _ + str(timestamp) + _ + '1'
 str_r = str_r.replace(base_url, '')
-
+print(f"str_r:{str_r}")
 an = js.call('get_data', str_r)
 
 analysis = base64.b64encode(an.encode('utf-8')).decode('utf-8')

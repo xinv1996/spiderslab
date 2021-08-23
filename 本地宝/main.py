@@ -22,7 +22,9 @@ def bdb_func(chufa_city: str, chufa_qu: str, mudi_city: str, mudi_qu: str):
     k = req_k.json()['k']
 
     s = js.call('get_s', k[:-10])
+    print(s)
     page = 1
+    print(k)
     url = f'http://m.bj.bendibao.com/news/gelizhengce/gl_V5.php?back=1&chufa_city={chufa_city}&mudi_city={mudi_city}&chufa_qu={chufa_qu}&mudi_qu={mudi_qu}&page={page}'
     data = {
         "s": f"{k}{s}"

@@ -10,7 +10,7 @@ import requests
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36"
 }
-with open('./airHistory.js', 'r') as f:
+with open('./airHistory_2108.js', 'r') as f:
     js_code = f.read()
 
 js = execjs.compile(js_code)
