@@ -290,5 +290,6 @@ if __name__ == '__main__':
     js_req = requests.get(url=urljoin(url,js_url),headers=headers)
     js_bs64_bs64_code = f"a = {js_req.text}"
     res = execjs.compile(js_bs64_bs64_code)
-    print(res)
+    # print(res)
 
+    print(js_req.text)
