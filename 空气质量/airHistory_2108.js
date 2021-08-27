@@ -1507,8 +1507,16 @@ var AES= {
     return result.toString(CryptoJS.enc.Utf8);
   }
 };
-
-
+var BASE64 = {
+    encrypt: function(text) {
+        var b = new Base64();
+        return b.encode(text);
+    },
+    decrypt: function(text) {
+        var b = new Base64();
+        return b.decode(text);
+    }
+};
 function dweklxde(tsdx) {
     var b = new Base64();
     return b.decode(tsdx)
@@ -1550,6 +1558,11 @@ function aes_encrypt(text, key, iv) {
 }
 
 function aes_decrypt(data, key, iv) {
+
+    data = BASE64.decrypt(data);
+    data = DES.decrypt(data, key, iv);
     data = AES.decrypt(data, key, iv);
+    data = BASE64.decrypt(data);
     return data;
   }
+

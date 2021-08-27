@@ -75,6 +75,10 @@ def aes_js(sss):
 
     resp = requests.post(url=url, headers=headers, data=data)
     print(resp.text)
+    print(key_name)
+    print(iv_name)
+    res = js.call("aes_decrypt",resp.text,key,iv)
+    print(res)
 
 def bs64_js(sss):
     appid_name = re.findall("appId:.*?(\w+),", sss)[0]
