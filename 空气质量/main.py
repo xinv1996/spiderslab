@@ -24,7 +24,8 @@ city = '德州'
 # 月统计
 # form_data = {"hoAHCQ2cH": js.call("get_req", "GETMONTHDATA", {"city": city})}
 # 日统计
-form_data = {"hmebd5PRa": js.call("get_req", "GETDAYDATA",{"city": city, "month": '201409'})}
+# form_data = {"hmebd5PRa": js.call("get_req", "GETDAYDATA",{"city": city, "month": '201409'})}
+form_data = {"hGrEW6dcs": "GGQmSXluPKCUewlCorSQeXfE94PIHRAjZOwZwErkNeli4HdcBU98anjVz3dzUxAYNZatMHYkcav27zuP37wvVOW++Nq02K6N3YkAInYziMn2b0ff7c5Nfz8zgddqtRigRbXdeYMlH9a+XNEMF3ZsvjU/kfWqFBisoTeoXBp5UEPinHidMwlDu6EH0LYCvZT2OhVSoK+DSKgQuU6Ra1epypKeY2uPDqYrbu1M+e5DayOA3Sv2/qfYvWKTUtC37pxmv5IKw2L1hvPl3N//9vUPypXPQXF11xMNHOMgxC3XwHrzhwxuWyeOkSUSbtlVRcVhjV1+ydMu4ShcnE7QBH4q/jmTTkidf+NFvK5T4Z/mMM4="}
 
 resp = requests.post(url=url, headers=headers, data=form_data)
 
