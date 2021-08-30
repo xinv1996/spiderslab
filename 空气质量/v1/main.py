@@ -13,7 +13,7 @@ headers = {
     "Origin": "https://www.aqistudy.cn",
     "Referer": "https://www.aqistudy.cn/historydata/daydata.php?city=%E4%BF%9D%E5%AE%9A&month=202010",
 }
-with open('./airHistory.js', 'r',encoding='utf-8') as f:
+with open('airHistory.js', 'r', encoding='utf-8') as f:
     js_code = f.read()
 
 js = execjs.compile(js_code)
