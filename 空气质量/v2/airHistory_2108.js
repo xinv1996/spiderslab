@@ -1454,69 +1454,70 @@ CryptoJS.mode.ECB = function () {
     h.TripleDES = e._createHelper(g)
 })();
 var DES = {
- encrypt: function(text, key, iv){
-    var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
-    var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
-    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
-    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
-    var result = CryptoJS.DES.encrypt(text, secretkey, {
-      iv: secretiv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7
-    });
-    return result.toString();
- },
- decrypt: function(text, key, iv){
-    var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
-    var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
-    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
-    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
-    var result = CryptoJS.DES.decrypt(text, secretkey, {
-      iv: secretiv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7
-    });
-    return result.toString(CryptoJS.enc.Utf8);
-  }
+    encrypt: function (text, key, iv) {
+        var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
+        var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
+        secretkey = CryptoJS.enc.Utf8.parse(secretkey);
+        secretiv = CryptoJS.enc.Utf8.parse(secretiv);
+        var result = CryptoJS.DES.encrypt(text, secretkey, {
+            iv: secretiv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        });
+        return result.toString();
+    },
+    decrypt: function (text, key, iv) {
+        var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
+        var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
+        secretkey = CryptoJS.enc.Utf8.parse(secretkey);
+        secretiv = CryptoJS.enc.Utf8.parse(secretiv);
+        var result = CryptoJS.DES.decrypt(text, secretkey, {
+            iv: secretiv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        });
+        return result.toString(CryptoJS.enc.Utf8);
+    }
 };
-var AES= {
-  encrypt: function(text, key, iv) {
-    var secretkey = (CryptoJS.MD5(key).toString()).substr(16, 16);
-    var secretiv = (CryptoJS.MD5(iv).toString()).substr(0, 16);
-    // console.log('real key:', secretkey);
-    // console.log('real iv:', secretiv);
-    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
-    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
-    var result = CryptoJS.AES.encrypt(text, secretkey, {
-      iv: secretiv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7
-    });
-    return result.toString();
-  },
-  decrypt: function(text, key, iv) {
-    var secretkey = (CryptoJS.MD5(key).toString()).substr(16, 16);
-    var secretiv = (CryptoJS.MD5(iv).toString()).substr(0, 16);
-    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
-    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
-    var result = CryptoJS.AES.decrypt(text, secretkey, {
-      iv: secretiv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7
-    });
-    return result.toString(CryptoJS.enc.Utf8);
-  }
+var AES = {
+    encrypt: function (text, key, iv) {
+        var secretkey = (CryptoJS.MD5(key).toString()).substr(16, 16);
+        var secretiv = (CryptoJS.MD5(iv).toString()).substr(0, 16);
+        // console.log('real key:', secretkey);
+        // console.log('real iv:', secretiv);
+        secretkey = CryptoJS.enc.Utf8.parse(secretkey);
+        secretiv = CryptoJS.enc.Utf8.parse(secretiv);
+        var result = CryptoJS.AES.encrypt(text, secretkey, {
+            iv: secretiv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        });
+        return result.toString();
+    },
+    decrypt: function (text, key, iv) {
+        var secretkey = (CryptoJS.MD5(key).toString()).substr(16, 16);
+        var secretiv = (CryptoJS.MD5(iv).toString()).substr(0, 16);
+        secretkey = CryptoJS.enc.Utf8.parse(secretkey);
+        secretiv = CryptoJS.enc.Utf8.parse(secretiv);
+        var result = CryptoJS.AES.decrypt(text, secretkey, {
+            iv: secretiv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        });
+        return result.toString(CryptoJS.enc.Utf8);
+    }
 };
 var BASE64 = {
-    encrypt: function(text) {
+    encrypt: function (text) {
         var b = new Base64();
         return b.encode(text);
     },
-    decrypt: function(text) {
+    decrypt: function (text) {
         var b = new Base64();
         return b.decode(text);
     }
 };
+
 function dweklxde(tsdx) {
     var b = new Base64();
     return b.decode(tsdx)
@@ -1528,17 +1529,12 @@ function get_full_js() {
 }
 
 
-function des_encrypt(text, key, iv) {
-    var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
-    var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
-    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
-    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
-    var result = CryptoJS.DES.encrypt(text, secretkey, {
-        iv: secretiv,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7
-    });
-    return result.toString();
+function dec_func(data, des_dec_key, des_dec_iv,aes_dec_key,aes_dec_iv) {
+    data = BASE64.decrypt(data);
+    data = DES.decrypt(data, des_dec_key, des_dec_iv);
+    data = AES.decrypt(data, aes_dec_key, aes_dec_iv);
+    data = BASE64.decrypt(data);
+    return data;
 }
 
 
@@ -1558,11 +1554,19 @@ function aes_encrypt(text, key, iv) {
 }
 
 function aes_decrypt(data, key, iv) {
-
     data = BASE64.decrypt(data);
-    data = DES.decrypt(data, key, iv);
-    data = AES.decrypt(data, key, iv);
+    data = DES.decrypt(data, dskUrRDk57gS, dsizH7BIwCFr);
+    data = AES.decrypt(data, askvtGRZIbeH, asiOJ7WoeCgT);
     data = BASE64.decrypt(data);
     return data;
-  }
+}
+
+
+function bs64_decrypt(data) {
+    data = BASE64.decrypt(data);
+    data = DES.decrypt(data, "hXbwQT9K5HOU5aQR", "xwFE2u5P79GTQ3XZ");
+    data = AES.decrypt(data, 'aqu6FSfMUlZZrMqm', 'bkeb9yx04dhOKrkA');
+    data = BASE64.decrypt(data);
+    return data
+}
 
