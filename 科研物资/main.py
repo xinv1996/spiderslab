@@ -20,7 +20,8 @@ function get_x_auth_token() {
 
 
 function get_sign(urlstr) {
-    var bcrypt = require('bcrypt');
+    # var bcrypt = require('bcrypt');   # mac
+    var bcrypt = require('bcryptjs');   # windows
     var r = urlstr.replace('https://www.caasbuy.com','')
     var c = 1e4 * Date.now() + Math.floor(1e4 * Math.random());
     sign = bcrypt.hashSync("requestNonce=".concat(c, "&requestUrl=").concat(r), bcrypt.genSaltSync())
