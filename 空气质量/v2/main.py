@@ -54,7 +54,7 @@ def des_js(js_str):
     resp = requests.post(url=url, headers=headers, data=data)
 
     print(resp.text)
-    dec_data = js.call('des_encrypt', resp.text, des_dec_key, des_dec_iv, aes_dec_key, aes_dec_iv)
+    dec_data = js.call('dec_func', resp.text, des_dec_key, des_dec_iv, aes_dec_key, aes_dec_iv)
     print(json.loads(dec_data))
 
 

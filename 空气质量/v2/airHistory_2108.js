@@ -1536,7 +1536,18 @@ function dec_func(data, des_dec_key, des_dec_iv,aes_dec_key,aes_dec_iv) {
     data = BASE64.decrypt(data);
     return data;
 }
-
+function des_encrypt(text, key, iv) {
+    var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
+    var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
+    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
+    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
+    var result = CryptoJS.DES.encrypt(text, secretkey, {
+        iv: secretiv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+    });
+    return result.toString();
+}
 
 function aes_encrypt(text, key, iv) {
     var secretkey = (CryptoJS.MD5(key).toString()).substr(16, 16);
@@ -1551,14 +1562,6 @@ function aes_encrypt(text, key, iv) {
         padding: CryptoJS.pad.Pkcs7
     });
     return result.toString();
-}
-
-function aes_decrypt(data, key, iv) {
-    data = BASE64.decrypt(data);
-    data = DES.decrypt(data, dskUrRDk57gS, dsizH7BIwCFr);
-    data = AES.decrypt(data, askvtGRZIbeH, asiOJ7WoeCgT);
-    data = BASE64.decrypt(data);
-    return data;
 }
 
 
