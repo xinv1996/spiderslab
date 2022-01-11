@@ -24,7 +24,7 @@ js_code = '''function r_func(e) {
 };
 '''
 
-word = '您好'
+word = '妍，你好'
 js = execjs.compile(js_code)
 
 res_data = js.call('r_func', word)
