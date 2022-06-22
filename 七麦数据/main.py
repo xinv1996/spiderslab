@@ -38,13 +38,10 @@ function f(e, t) {
 }
 
 function get_data(s1){
-    s2 = '00000008d78d46a'
+    s2 = '0000000c735d856'
     return f(s1,s2)
 }
 '''
-
-
-
 
 # jscode = open('qm.js', 'r').read()
 js = execjs.compile(jscode)
@@ -53,11 +50,11 @@ url = "https://api.qimai.cn/rank/indexPlus/brand_id/1"
 
 # 参数
 # brand: all  country: cn   device: iphone  genre: 36  date: 2021-02-01  page: 3
-today =str(datetime.datetime.today()).split()[0]
+today = str(datetime.datetime.today()).split()[0]
 
 page = 3
 
-params = ['all', 'cn', 'iphone', '36',today, str(page)]
+params = ['all', 'cn', 'iphone', '36', today, str(page)]
 
 r = ''.join(sorted(params))
 print(f"r:{r}")
@@ -66,7 +63,6 @@ base64_r = base64.b64encode(r.encode('utf-8')).decode('utf-8')
 print(f"base64_r:{base64_r}")
 
 base_url = 'https://api.qimai.cn'
-
 
 timestamp = int(time.time() * 1000 - 1515125653845)
 
@@ -93,6 +89,7 @@ req_params = {
     "page": page
 }
 
+print(req_params)
 req = requests.get(url=url, params=req_params, headers=headers)
 
 print(req.text)
