@@ -112,7 +112,7 @@ def bs64_js(js_str):
     param_name = re.findall("data:\s?\{\s?(\w+):.*?}", js_str)[0]
 
     method = "GETDAYDATA"
-    obj = {"city": "济南", "month": '202112'}
+    obj = {"city": "济南", "month": '202206'}
     timestamp = int(time.time() * 1000)
     clienttype = 'WEB'
     form_data = {
