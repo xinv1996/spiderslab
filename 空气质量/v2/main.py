@@ -3,8 +3,11 @@ import json
 import re
 import time
 import hashlib
+import urllib3
 from urllib.parse import urljoin
 
+
+urllib3.disable_warnings()
 import execjs
 import requests
 
@@ -51,7 +54,7 @@ def des_js(js_str):
 
     url = "https://www.aqistudy.cn/historydata/api/historyapi.php"
 
-    resp = requests.post(url=url, headers=headers, data=data)
+    resp = requests.post(url=url, headers=headers, data=data,verify=False)
 
     print(resp.text)
     dec_data = js.call('dec_func', resp.text, des_dec_key, des_dec_iv, aes_dec_key, aes_dec_iv)
@@ -100,7 +103,7 @@ def aes_js(js_str):
 
     url = "https://www.aqistudy.cn/historydata/api/historyapi.php"
 
-    resp = requests.post(url=url, headers=headers, data=data)
+    resp = requests.post(url=url, headers=headers, data=data,verify=False)
 
     dec_data = js.call('dec_func', resp.text, des_dec_key, des_dec_iv, aes_dec_key, aes_dec_iv)
     print(json.loads(dec_data))
@@ -157,9 +160,9 @@ if __name__ == '__main__':
         "Origin": "https://www.aqistudy.cn",
         "Referer": "https://www.aqistudy.cn/historydata/daydata.php?city=%E4%BF%9D%E5%AE%9A&month=202009",
     }
-    req = requests.get(url, headers=headers)
+    req = requests.get(url, headers=headers,verify=False)
     js_url = re.findall(r'src="(resource/js/.*?.min.js\?v=\d+)"', req.text)[0]
-    js_req = requests.get(url=urljoin(url, js_url), headers=headers)
+    js_req = requests.get(url=urljoin(url, js_url), headers=headers,verify=False)
     print(js_req.url)
 
     js_code = open('airHistory_2108.js', 'r').read()
