@@ -135,7 +135,7 @@ def bs64_js(js_str):
 
     url = "https://www.aqistudy.cn/historydata/api/historyapi.php"
 
-    resp = requests.post(url=url, headers=headers, data=data)
+    resp = requests.post(url=url, headers=headers, data=data,verify=False)
 
     des_keys = re.findall(f'DES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
     des_dec_key_name, des_dec_iv_name = des_keys[0]
