@@ -42,9 +42,9 @@ for edge in g.edges(data=True):
         end_nearest_node = list(line.coords)[-1]
 
 # 使用
-shortest_path = nx.shortest_path(g, source=start_nearest_node, target=end_nearest_node, weight='length')
+shortest_path = nx.astar_path(g, source=start_nearest_node, target=end_nearest_node, weight='length')
 # 计算最短路径长度
-shortest_path_length = nx.shortest_path_length(g, source=start_nearest_node, target=end_nearest_node, weight='length')
+shortest_path_length = nx.astar_path_length(g, source=start_nearest_node, target=end_nearest_node, weight='length')
 print("最短路径长度:", shortest_path_length)
 
 # 可视化路径
