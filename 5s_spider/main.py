@@ -14,6 +14,6 @@ scraper = cloudscraper.create_scraper(delay=5, browser={
 
 })
 resp = scraper.get('https://webcache.googleusercontent.com/search?q=cache:https://www.truepeoplesearch.com/find/i',
-                   proxies={'http': 'http://127.0.0.1:1996', 'https': 'http://127.0.0.1:1996'})
+                   proxies={'http': 'http://127.0.0.1:7897', 'https': 'http://127.0.0.1:7897'})
 print(resp.text)
 print(resp.status_code)

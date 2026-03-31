@@ -13,24 +13,24 @@ import requests
 
 
 def des_js(js_str):
-    keys = re.findall(f'DES\.encrypt\((\w+)\s?,\s?(\w+)\s?,\s?(\w+)\)', js_str)
+    keys = re.findall(rf'DES\.encrypt\((\w+)\s?,\s?(\w+)\s?,\s?(\w+)\)', js_str)
     text_name, key_name, iv_name = keys[0]
-    key = re.findall(f'const\s+?{key_name}\s+?=.*?"(.*?)"', js_str)[0]
-    iv = re.findall(f'const\s+?{iv_name}\s+?=.*?"(.*?)"', js_str)[0]
-    appid_name = re.findall("appId:.*?(\w+),", js_str)[0]
-    appId = re.findall(f"var\s?{appid_name}\s?=.*?'(.*?)'", js_str)[0]
-    param_name = re.findall("data:\s?\{\s?(\w+):.*?}", js_str)[0]
+    key = re.findall(rf'const\s+?{key_name}\s+?=.*?"(.*?)"', js_str)[0]
+    iv = re.findall(rf'const\s+?{iv_name}\s+?=.*?"(.*?)"', js_str)[0]
+    appid_name = re.findall(r"appId:.*?(\w+),", js_str)[0]
+    appId = re.findall(rf"var\s?{appid_name}\s?=.*?'(.*?)'", js_str)[0]
+    param_name = re.findall(r"data:\s?\{\s?(\w+):.*?}", js_str)[0]
 
-    des_keys = re.findall(f'DES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
+    des_keys = re.findall(rf'DES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
     des_dec_key_name, des_dec_iv_name = des_keys[0]
 
-    des_dec_key = re.findall(f'const\s+?{des_dec_key_name}\s+?=.*?"(.*?)"', js_str)[0]
-    des_dec_iv = re.findall(f'const\s+?{des_dec_iv_name}\s+?=.*?"(.*?)"', js_str)[0]
+    des_dec_key = re.findall(rf'const\s+?{des_dec_key_name}\s+?=.*?"(.*?)"', js_str)[0]
+    des_dec_iv = re.findall(rf'const\s+?{des_dec_iv_name}\s+?=.*?"(.*?)"', js_str)[0]
 
-    aes_keys = re.findall(f'AES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
+    aes_keys = re.findall(rf'AES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
     aes_dec_key_name, aes_dec_iv_name = aes_keys[0]
-    aes_dec_key = re.findall(f'const\s+?{aes_dec_key_name}\s+?=.*?"(.*?)"', js_str)[0]
-    aes_dec_iv = re.findall(f'const\s+?{aes_dec_iv_name}\s+?=.*?"(.*?)"', js_str)[0]
+    aes_dec_key = re.findall(rf'const\s+?{aes_dec_key_name}\s+?=.*?"(.*?)"', js_str)[0]
+    aes_dec_iv = re.findall(rf'const\s+?{aes_dec_iv_name}\s+?=.*?"(.*?)"', js_str)[0]
 
     method = "GETDAYDATA"
     obj = {"city": "济南", "month": '201702'}
@@ -62,24 +62,24 @@ def des_js(js_str):
 
 
 def aes_js(js_str):
-    keys = re.findall(f'AES\.encrypt\((\w+)\s?,\s?(\w+)\s?,\s?(\w+)\)', js_str)
+    keys = re.findall(rf'AES\.encrypt\((\w+)\s?,\s?(\w+)\s?,\s?(\w+)\)', js_str)
     text_name, key_name, iv_name = keys[1]
-    key = re.findall(f'const\s+?{key_name}\s+?=.*?"(.*?)"', js_str)[0]
-    iv = re.findall(f'const\s+?{iv_name}\s+?=.*?"(.*?)"', js_str)[0]
-    appid_name = re.findall("appId:.*?(\w+),", js_str)[0]
-    appId = re.findall(f"var\s?{appid_name}\s?=.*?'(.*?)'", js_str)[0]
-    param_name = re.findall("data:\s?\{\s?(\w+):.*?}", js_str)[0]
+    key = re.findall(rf'const\s+?{key_name}\s+?=.*?"(.*?)"', js_str)[0]
+    iv = re.findall(rf'const\s+?{iv_name}\s+?=.*?"(.*?)"', js_str)[0]
+    appid_name = re.findall(r"appId:.*?(\w+),", js_str)[0]
+    appId = re.findall(rf"var\s?{appid_name}\s?=.*?'(.*?)'", js_str)[0]
+    param_name = re.findall(r"data:\s?\{\s?(\w+):.*?}", js_str)[0]
 
-    des_keys = re.findall(f'DES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
+    des_keys = re.findall(rf'DES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
     des_dec_key_name, des_dec_iv_name = des_keys[0]
 
-    des_dec_key = re.findall(f'const\s+?{des_dec_key_name}\s+?=.*?"(.*?)"', js_str)[0]
-    des_dec_iv = re.findall(f'const\s+?{des_dec_iv_name}\s+?=.*?"(.*?)"', js_str)[0]
+    des_dec_key = re.findall(rf'const\s+?{des_dec_key_name}\s+?=.*?"(.*?)"', js_str)[0]
+    des_dec_iv = re.findall(rf'const\s+?{des_dec_iv_name}\s+?=.*?"(.*?)"', js_str)[0]
 
-    aes_keys = re.findall(f'AES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
+    aes_keys = re.findall(rf'AES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
     aes_dec_key_name, aes_dec_iv_name = aes_keys[0]
-    aes_dec_key = re.findall(f'const\s+?{aes_dec_key_name}\s+?=.*?"(.*?)"', js_str)[0]
-    aes_dec_iv = re.findall(f'const\s+?{aes_dec_iv_name}\s+?=.*?"(.*?)"', js_str)[0]
+    aes_dec_key = re.findall(rf'const\s+?{aes_dec_key_name}\s+?=.*?"(.*?)"', js_str)[0]
+    aes_dec_iv = re.findall(rf'const\s+?{aes_dec_iv_name}\s+?=.*?"(.*?)"', js_str)[0]
 
     method = "GETDAYDATA"
     obj = {"city": "济南", "month": '202603'}
@@ -110,9 +110,9 @@ def aes_js(js_str):
 
 
 def bs64_js(js_str):
-    appid_name = re.findall("appId:.*?(\w+),", js_str)[0]
-    appId = re.findall(f"var\s?{appid_name}\s?=.*?'(.*?)'", js_str)[0]
-    param_name = re.findall("data:\s?\{\s?(\w+):.*?}", js_str)[0]
+    appid_name = re.findall(r"appId:.*?(\w+),", js_str)[0]
+    appId = re.findall(rf"var\s?{appid_name}\s?=.*?'(.*?)'", js_str)[0]
+    param_name = re.findall(r"data:\s?\{\s?(\w+):.*?}", js_str)[0]
 
     method = "GETDAYDATA"
     obj = {"city": "济南", "month": '202206'}
@@ -137,16 +137,16 @@ def bs64_js(js_str):
 
     resp = requests.post(url=url, headers=headers, data=data,verify=False)
 
-    des_keys = re.findall(f'DES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
+    des_keys = re.findall(rf'DES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
     des_dec_key_name, des_dec_iv_name = des_keys[0]
 
-    des_dec_key = re.findall(f'const\s+?{des_dec_key_name}\s?=.*?"(.*?)"', js_str)[0]
-    des_dec_iv = re.findall(f'const\s+?{des_dec_iv_name}\s?=.*?"(.*?)"', js_str)[0]
+    des_dec_key = re.findall(rf'const\s+?{des_dec_key_name}\s?=.*?"(.*?)"', js_str)[0]
+    des_dec_iv = re.findall(rf'const\s+?{des_dec_iv_name}\s?=.*?"(.*?)"', js_str)[0]
 
-    aes_keys = re.findall(f'AES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
+    aes_keys = re.findall(rf'AES\.decrypt\(data,\s?(\w+),\s?(\w+)\);', js_str)
     aes_dec_key_name, aes_dec_iv_name = aes_keys[0]
-    aes_dec_key = re.findall(f'const\s+?{aes_dec_key_name}\s?=.*?"(.*?)"', js_str)[0]
-    aes_dec_iv = re.findall(f'const\s+?{aes_dec_iv_name}\s?=.*?"(.*?)"', js_str)[0]
+    aes_dec_key = re.findall(rf'const\s+?{aes_dec_key_name}\s?=.*?"(.*?)"', js_str)[0]
+    aes_dec_iv = re.findall(rf'const\s+?{aes_dec_iv_name}\s?=.*?"(.*?)"', js_str)[0]
 
     dec_data = js.call('dec_func', resp.text, des_dec_key, des_dec_iv, aes_dec_key, aes_dec_iv)
     print(json.loads(dec_data))
