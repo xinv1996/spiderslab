@@ -82,7 +82,7 @@ def aes_js(js_str):
     aes_dec_iv = re.findall(f'const\s+?{aes_dec_iv_name}\s+?=.*?"(.*?)"', js_str)[0]
 
     method = "GETDAYDATA"
-    obj = {"city": "济南", "month": '201702'}
+    obj = {"city": "济南", "month": '202603'}
     timestamp = int(time.time() * 1000)
     clienttype = 'WEB'
     form_data = {
